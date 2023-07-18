@@ -40,7 +40,7 @@ public class UserService {
     public ResponseEntity<Object> editUser(UserRecordDto userRecordDto, UUID id) {
         Optional<UserModel> user = userRepository.findById(id);
         if(user.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found.");
         }
         var userModel = user.get();
         BeanUtils.copyProperties(userRecordDto, userModel);

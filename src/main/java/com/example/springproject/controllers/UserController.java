@@ -17,6 +17,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /* método para registrar um novo usuário */
     @PostMapping("/register")
     public ResponseEntity<UserModel> registerUser(@RequestBody @Valid UserRecordDto userRecordDto) {
         var userModel = userService.registerUser(userRecordDto);
@@ -32,10 +33,9 @@ public class UserController {
      /* possível método para editar um usuário */
     @PutMapping("/{id}/edit")
     public ResponseEntity<Object> editUser(@PathVariable(value = "id") UUID id,
-                                             @RequestBody @Valid UserRecordDto userRecordDto) {
+                                           @RequestBody @Valid UserRecordDto userRecordDto) {
         return userService.editUser(userRecordDto, id);
     }
-
 
 }
 

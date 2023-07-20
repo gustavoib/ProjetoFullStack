@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "TB_NOTES")
@@ -57,4 +56,5 @@ public class NotesModel implements Serializable {
     public void setUser(UserModel user) {
         this.user = user;
     }
+
 }

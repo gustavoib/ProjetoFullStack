@@ -17,12 +17,11 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    /* registrar um usuário -> dar ao usuário a opção de se cadastrar na aplicação */
-    public UserModel registerUser(UserRecordDto userRecordDto) {
+    /*public UserModel registerUser(UserRecordDto userRecordDto) {
         UserModel userModel = new UserModel();
         BeanUtils.copyProperties(userRecordDto, userModel);
         return userRepository.save(userModel);
-    }
+    }*/
 
     /* deletar um usuário -> dar ao usuário a opção de apagar sua conta */
     public ResponseEntity<Object> deleteUser(UUID id) {

@@ -21,10 +21,10 @@ public class NotesController {
     private NotesService notesService;
 
     /* rota para criar uma nota */
-    @PostMapping("/{userId}/register")
+    @PostMapping("/{id}/register")
     public ResponseEntity<NotesModel> createNote(@RequestBody @Valid NotesRecordDto notesRecordDto,
-                                                 @PathVariable(value = "userId") UUID userId) {
-        var notes = notesService.createNote(notesRecordDto, userId);
+                                                 @PathVariable(value = "id") UUID id) {
+        var notes = notesService.createNote(notesRecordDto, id);
         return ResponseEntity.status(HttpStatus.CREATED).body(notes);
     }
 

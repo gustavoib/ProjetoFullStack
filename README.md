@@ -7,7 +7,7 @@ A ideia inicial do projeto é implementar uma aplicação web que organize ativi
 
 # Tecnologias usadas:
 
-- Java 20
+- Java 17
 - Spring Boot 3
 - ReactJS
 - PostgreSQL

@@ -2,6 +2,7 @@ package com.example.springproject.services;
 
 import com.example.springproject.dtos.NotesRecordDto;
 import com.example.springproject.models.NotesModel;
+import com.example.springproject.models.UserModel;
 import com.example.springproject.repositories.NotesRepository;
 import com.example.springproject.repositories.UserRepository;
 import com.example.springproject.services.exceptions.UserNotFoundException;
@@ -36,14 +37,30 @@ public class NotesService {
     }
 
     /* deletar uma nota */
-    public ResponseEntity<Object> deleteNotes(Long id) {
-        Optional<NotesModel> notes = notesRepository.findById(id);
-        if(notes.isEmpty()) {
+    public ResponseEntity<Object> deleteNotes(Long idNote, UUID idUser) {
+        Optional<NotesModel> note = notesRepository.findByIdNoteAndUser_IdUser(idNote, idUser);
+        if(note.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("note not found.");
         }
-        notesRepository.delete(notes.get());
+        notesRepository.delete(note.get());
         return ResponseEntity.status(HttpStatus.OK).body("note deleted successfully.");
     }
+
+    /* apagar todas as notas do usuário */
+    public ResponseEntity<Object> deleteAllNotes(UUID userId) {
+        Optional<UserModel> user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+        List<NotesModel> userNotes = notesRepository.findByUser_IdUser(userId);
+        if (userNotes.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No notes found for this user.");
+        }
+        notesRepository.deleteAll(userNotes);
+
+        return ResponseEntity.status(HttpStatus.OK).body("All notes deleted successfully for this user.");
+    }
+
 
     /* editar uma nota */
     public ResponseEntity<Object> editNotes(NotesRecordDto notesRecordDto, Long id) {

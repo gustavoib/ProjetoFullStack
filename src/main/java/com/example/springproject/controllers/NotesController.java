@@ -29,9 +29,16 @@ public class NotesController {
     }
 
     /* rota para deletar uma nota */
-    @DeleteMapping("/{id}/delete")
-    public ResponseEntity<Object> deleteNotes(@PathVariable(value = "id") Long id) {
-        return notesService.deleteNotes(id);
+    @DeleteMapping("/{idUser}/{id}/delete")
+    public ResponseEntity<Object> deleteNotes(@PathVariable(value = "id") Long id,
+                                              @PathVariable(value = "idUser") UUID idUser) {
+        return notesService.deleteNotes(id, idUser);
+    }
+
+    /* rota para deletar todas as notas */
+    @DeleteMapping("/{idUser}/delete-all-notes")
+    public ResponseEntity<Object> deleteAllNotes(@PathVariable(value = "idUser") UUID idUser) {
+        return notesService.deleteAllNotes(idUser);
     }
 
     /* rota para editar uma nota */
@@ -71,9 +78,9 @@ public class NotesController {
     }
 
     /* rota para filtrar por data de maneira crescente */
-    @GetMapping ("/{idUser}/list-by-date-asc")
-    public ResponseEntity<Object> listNotesFromUserByDateAsc(@PathVariable(value = "idUser") UUID idUser) {
-        return notesService.listNotesByDateAsc(idUser);
+    @GetMapping ("/{id}/list-by-date-asc")
+    public ResponseEntity<Object> listNotesFromUserByDateAsc(@PathVariable(value = "id") UUID id) {
+        return notesService.listNotesByDateAsc(id);
     }
 
 

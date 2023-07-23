@@ -14,5 +14,4 @@ public interface NotesRepository extends JpaRepository<NotesModel, Long> {
     List<NotesModel> findByUser_IdUserOrderByDateDesc(UUID idUser);
     List<NotesModel> findByUser_IdUserOrderByDateAsc(UUID idUser);
     List<NotesModel> findByUser_IdUserAndDateBetween(UUID idUser, LocalDateTime startDate, LocalDateTime endDate);
-
 }

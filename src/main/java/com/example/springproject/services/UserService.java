@@ -16,15 +16,12 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
-    /*public UserModel registerUser(UserRecordDto userRecordDto) {
-        UserModel userModel = new UserModel();
-        BeanUtils.copyProperties(userRecordDto, userModel);
-        return userRepository.save(userModel);
-    }*/
+    @Autowired
+    private NotesService notesService;
 
     /* deletar um usuário -> dar ao usuário a opção de apagar sua conta */
     public ResponseEntity<Object> deleteUser(UUID id) {
+        notesService.deleteAllNotes(id);
         Optional<UserModel> user = userRepository.findById(id);
         if(user.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found.");

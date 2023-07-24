@@ -1,0 +1,33 @@
+.footer {
+    background-color: #212129;
+    padding: 20px 0;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    text-align: center; 
+}
+
+thead th {
+    background-color: #212129;
+    color: #fff;
+    padding: 5px;
+}
+
+
+tbody tr {
+    text-align: center; 
+}
+
+td {
+    padding: 5px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+  

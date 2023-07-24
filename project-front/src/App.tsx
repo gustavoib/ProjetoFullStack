@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import HeaderComponent from './components/HeaderComponent'
+import FooterComponent from './components/FooterComponent'
+import './index.css'
+import LoginComponent from './components/LoginComponent'
+import HomeComponent from './components/HomeComponent'
+import AppRoutes from './AppRoutes';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1> iniciando o projeto no escopo do front-end </h1>
+      <AppRoutes />
     </>
   )
 }
 
-export default App
+export default App;

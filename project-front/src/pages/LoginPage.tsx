@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import styles from './Login.module.css';
 import { ILogin } from '../interfaces/Login';
-import FooterComponent from './FooterComponent';
-import HeaderComponent from './HeaderComponent';
+import FooterComponent from '../components/FooterComponent';
+import HeaderComponent from '../components/HeaderComponent';
 import { AuthContext } from '../contexts/auth';
 
 
-const LoginComponent = () => {
+const LoginPage = () => {
 
     const [access, setAccess] = useState<ILogin>({} as ILogin);
 
@@ -47,7 +47,7 @@ const LoginComponent = () => {
         </div>
         <FooterComponent />
     </>
-    );
+  );
 };
 
-export default LoginComponent;
+export default LoginPage;

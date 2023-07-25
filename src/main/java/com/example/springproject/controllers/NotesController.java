@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/notes")
+@CrossOrigin(origins = "*")
 public class NotesController {
     @Autowired
     private NotesService notesService;

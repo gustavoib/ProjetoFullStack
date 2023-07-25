@@ -16,8 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;

@@ -30,10 +30,11 @@ public class AuthController {
     public ResponseEntity login(@RequestBody @Valid AuthRecordDto authRecordDto){
         var usernamePassword = new UsernamePasswordAuthenticationToken(authRecordDto.email(), authRecordDto.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
+        var user = userRepository.findByEmail(authRecordDto.email());
 
         var token = tokenService.generateToken((UserModel) auth.getPrincipal());
 
-        return ResponseEntity.ok(new LoginRecordDto(token));
+        return ResponseEntity.ok(new LoginRecordDto(token, user));
 
         //return ResponseEntity.status(HttpStatus.OK).body("usuário logado com sucesso!");
     }

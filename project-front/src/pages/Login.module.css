@@ -48,7 +48,7 @@ a:hover {
     color: #000;
 }
   
-button {
+.login button {
     width: 100%;
     padding: 14px;
     background-color: #212129;
@@ -61,7 +61,7 @@ button {
     margin-top: 20px;
 }
   
-button:hover {
+.login button:hover {
     background-color: rgb(26, 26, 37);
 }
   

@@ -10,13 +10,14 @@ const LoginPage = () => {
 
     const [access, setAccess] = useState<ILogin>({} as ILogin);
 
-    const {authenticated, login} = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
 
     const hadleSubmit = (e: any) => {
         e.preventDefault();
         console.log("login", access);
         login(access.email, access.password);
+        console.log("login", access.email, access.password);
     }
 
     return (

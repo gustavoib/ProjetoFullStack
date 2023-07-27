@@ -1,0 +1,34 @@
+/* Estilo do card */
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    max-width: 500px;
+    overflow: hidden;
+  }
+  
+/* Estilo do conteúdo do card */
+.cardbody {
+    margin: 0;
+    padding: 0;
+    max-width: 500px;
+    max-height: 200px; /* Define um tamanho máximo para o conteúdo do card */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical caso o conteúdo seja maior que o tamanho máximo */
+    word-wrap: break-word; /* Quebra as palavras longas para evitar transbordamento */
+}
+  
+/* Estilo do título da nota */
+.cardtitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+  
+/* Estilo do texto da nota */
+.cardtext {
+    font-size: 16px;
+    color: #555;
+}

@@ -1,24 +1,26 @@
-import React from 'react';
 import FooterComponent from '../components/FooterComponent';
 import HeaderComponent from '../components/HeaderComponent';
-import { AuthContext } from '../contexts/auth';
 import styles from './Home.module.css';
+import write_icon from '../assets/write_icon.svg';
+//import CardComponent from '../components/CardComponent';
 
 const HomePage = () => {
-  const {logout} = React.useContext(AuthContext);
-
-  const hadleLogout = () => {
-    logout();
-  }
 
   return (
     <>
+    <HeaderComponent />
     <div className={styles.home}>
-      <HeaderComponent />
-      <button onClick={hadleLogout}>Sair</button>
-      <h1>Home</h1>
-      <FooterComponent />
+      <img src={write_icon} className='image1' alt='icon' />
+      <h1>Comece agora! Escreva uma nova nota de texto.</h1>
+      <button>Escrever nota</button>
+   {/*<div className={styles.conteiner}>
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+        <CardComponent />
+      </div>*/}
     </div>
+    <FooterComponent />
     </>
   );
 };

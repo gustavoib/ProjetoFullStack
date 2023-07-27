@@ -7,13 +7,19 @@
 }
 
 .header h1 {
-    background-color: #212129;
     margin-right: 30px;
     color: #fff;
 }
 
 .header a {
-    background-color: #212129;
+    color: #ffffff7b;
+    text-decoration: none;
+    display: block;
+    float: left;
+    padding: 15px;
+}
+
+.header p {
     color: #ffffff7b;
     text-decoration: none;
     display: block;
@@ -27,16 +33,16 @@
     border-radius: 10px;
 }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%; 
-}
-
-.header img {
-  width: 40px;
-  height: 40px;
+.perfil {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-left: auto; 
 }
+
+.logout {
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+}
+

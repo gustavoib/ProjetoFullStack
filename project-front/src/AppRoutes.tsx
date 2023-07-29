@@ -1,5 +1,6 @@
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import RegisterPage from './pages/RegisterPage';
 import { AuthProvider } from './contexts/auth';
 import { useContext } from 'react';
 import { AuthContext } from './contexts/auth';
@@ -27,11 +28,12 @@ const AppRoutes = () => {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/home" element={<Private><HomePage /></Private>} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/home" element={<Private><HomePage /></Private>} />
+          </Routes>
       </AuthProvider>
     </Router>
   );

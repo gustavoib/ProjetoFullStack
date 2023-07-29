@@ -1,19 +1,30 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Header.module.css';
 import perfil from '/perfil.svg';
-import logout_icon from '../assets/logout.svg'; ;
+import logout_icon from '../assets/logout.svg';
 import { AuthContext } from '../contexts/auth';
+import { toast } from 'react-toastify';
+import Modal from 'react-modal';
+import RegisterPage from '../pages/RegisterPage'; // Importe o componente RegisterPage
 
 const HeaderComponent = () => {
   const { authenticated, logout } = useContext(AuthContext);
-  
   const user = JSON.parse(localStorage.getItem('user')!);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Função para lidar com o logout
   const handleLogout = () => {
-    window.location.reload();
-    logout();   
-  }
+    logout();
+    toast.success('Logout realizado com sucesso!');
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <header className={styles.header}>
@@ -21,7 +32,7 @@ const HeaderComponent = () => {
       {authenticated ? (
         <>
           {/* Elementos a serem mostrados quando o usuário está autenticado */}
-          <a href="#about">Minhas notes</a>
+          <a href="#mynotes">Minhas notes</a>
           <img src={perfil} className={styles.perfil} alt="Avatar" />
           <p>{String(user.name)}</p>
           <img src={logout_icon} className={styles.logout} alt="Logout" />
@@ -34,9 +45,21 @@ const HeaderComponent = () => {
           <a href="#contact">Contatos</a>
           <a href="https://github.com/gustavoib/ProjetoFullStack/tree/front-end">Repositório GitHub</a>
           <img src={perfil} className={styles.perfil} alt="Avatar" />
-          <a href="#contact" className="cadastro">Cadastre-se</a>
+          <a href="#register" className="cadastro" onClick={openModal}>Cadastre-se</a>
         </>
       )}
+
+      {/* Modal para a página de registro */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Página de Registro"
+        shouldCloseOnEsc={true}
+        className={styles.modal}
+      >
+        <button className={styles.close} onClick={closeModal}>X</button>
+        <RegisterPage/>
+      </Modal>
     </header>
   );
 };

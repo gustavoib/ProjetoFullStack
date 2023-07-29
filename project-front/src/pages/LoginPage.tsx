@@ -4,20 +4,23 @@ import { ILogin } from '../interfaces/Login';
 import FooterComponent from '../components/FooterComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import { AuthContext } from '../contexts/auth';
-
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
-
     const [access, setAccess] = useState<ILogin>({} as ILogin);
-
+    const [incorrectPassword, setIncorrectPassword] = useState(false);
     const { login } = useContext(AuthContext);
 
 
-    const hadleSubmit = (e: any) => {
-        e.preventDefault();
-        console.log("login", access);
-        login(access.email, access.password);
-        console.log("login", access.email, access.password);
+    const hadleSubmit = async (e: any) => {
+      e.preventDefault();
+      const success = await login(access.email, access.password);
+
+      if (success) {
+        toast.success('Login realizado com sucesso!');
+      } else {
+        setIncorrectPassword(true);
+      }
     }
 
     return (
@@ -42,6 +45,7 @@ const LoginPage = () => {
                 value={login.password} 
                 onChange={(e) => setAccess({...access, password: e.target.value})}
                 required />
+            <p>{incorrectPassword && <span className={styles.error}>E-mail ou senha incorretos</span>}</p>    
             <a href="#redefinir" id="remember">Esqueci minha senha</a>
             <button className="actions" type="submit">Entrar</button>
           </form>

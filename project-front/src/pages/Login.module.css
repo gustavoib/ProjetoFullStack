@@ -64,4 +64,11 @@ a:hover {
 .login button:hover {
     background-color: rgb(26, 26, 37);
 }
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
   

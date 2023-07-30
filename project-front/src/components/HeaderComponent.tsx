@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import RegisterPage from '../pages/RegisterPage'; // Importe o componente RegisterPage
 
 const HeaderComponent = () => {
-  const { authenticated, logout } = useContext(AuthContext);
+  const { authenticated, logout, register } = useContext(AuthContext);
   const user = JSON.parse(localStorage.getItem('user')!);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,6 +16,11 @@ const HeaderComponent = () => {
   const handleLogout = () => {
     logout();
     toast.success('Logout realizado com sucesso!');
+  };
+
+  // Função para lidar com o registro
+  const handleRegister = () => {
+    register();
   };
 
   const openModal = () => {
@@ -32,7 +37,7 @@ const HeaderComponent = () => {
       {authenticated ? (
         <>
           {/* Elementos a serem mostrados quando o usuário está autenticado */}
-          <a href="#mynotes">Minhas notes</a>
+          <a href="/list-notes" onClick={handleRegister}>Minhas notes</a>
           <img src={perfil} className={styles.perfil} alt="Avatar" />
           <p>{String(user.name)}</p>
           <img src={logout_icon} className={styles.logout} alt="Logout" />

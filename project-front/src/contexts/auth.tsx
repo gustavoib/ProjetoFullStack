@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerUser } from '../services/service';
+import { api, loginUser, registerUser /*, getNotes*/ } from '../services/service';
 
 export const AuthContext = createContext({} as any);
 
@@ -70,6 +70,22 @@ export const AuthProvider = ({children}:any) => {
         return false; // Cadastro falhou
       };
     };
+
+    // const listNotes = async () => {
+    //   const storagedUser = localStorage.getItem('user');
+    //   const user = JSON.parse(String(storagedUser));
+    //   const id = user.idUser;
+
+    //   const response = await getNotes(id);
+
+    //   api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+
+    //   const notes = response.data;
+
+    //   console.log('notes', notes);
+
+    //   return notes;
+    // };
 
     return (
         <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register}}>

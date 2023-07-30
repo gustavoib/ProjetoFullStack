@@ -17,13 +17,12 @@ public class NotesModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_USERNOTE")
     private UserModel user;
-    @Column(name = "CONTENT")
+    @Column(name = "TITLE")
+    private String title;
+    @Column(name = "CONTENT", length = 1000)
     private String content;
     @Column(name = "DATE")
     private LocalDateTime date;
-
-    /*testar a situação do id atuando como o numero da note,
-     ele deve ser uma espécie de contator de notes para o usuário*/
 
     public Long getIdNote() {
         return idNote;
@@ -55,6 +54,14 @@ public class NotesModel implements Serializable {
 
     public void setUser(UserModel user) {
         this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }

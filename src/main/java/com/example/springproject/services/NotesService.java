@@ -29,6 +29,7 @@ public class NotesService {
         var user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
 
         NotesModel notes = new NotesModel();
+        notes.setTitle(notesRecordDto.title());
         notes.setContent(notesRecordDto.content());
         notes.setUser(user);
         notes.setDate(LocalDateTime.now());

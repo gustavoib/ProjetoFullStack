@@ -1,6 +1,4 @@
 import styles from './CardView.module.css';
-// import { useContext } from 'react';
-// import { AuthContext } from '../contexts/auth';
 
 type CardComponentViewProps = {
   content: string;
@@ -8,8 +6,6 @@ type CardComponentViewProps = {
 };
 
 const CardComponentView: React.FC<CardComponentViewProps> = ({ content, title }) => {
-
-  //const { listNotes } = useContext(AuthContext);
 
   return (
     <>

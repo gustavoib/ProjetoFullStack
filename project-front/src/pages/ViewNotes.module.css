@@ -7,4 +7,15 @@
     gap: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    min-height: 100vh;
 }
+.conteiner h3 {
+    text-align: center; /* Centraliza o texto do h3 horizontalmente */
+    color: #808080; /* Define a cor cinza (#808080 é um tom de cinza) */
+    font-size: 24px; /* Tamanho da fonte do h3 */
+    margin: 0; /* Remove margem padrão do h3 */
+    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

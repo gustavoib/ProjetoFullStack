@@ -12,7 +12,7 @@ const LoginPage = () => {
     const { login } = useContext(AuthContext);
 
 
-    const hadleSubmit = async (e: any) => {
+    const handleSubmit = async (e: any) => {
       e.preventDefault();
       const success = await login(access.email, access.password);
 
@@ -27,7 +27,7 @@ const LoginPage = () => {
       <> 
         <HeaderComponent />
         <div className={styles.login}>
-          <form className='login' onSubmit={hadleSubmit}>
+          <form className='login' onSubmit={handleSubmit}>
             <h1 className='title'>Login</h1>
             <label htmlFor="email">E-mail</label>
             <input 

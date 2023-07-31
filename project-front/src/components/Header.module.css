@@ -38,12 +38,19 @@
     color: #fff;
 }
 
-.header a {
+.link {
     color: #ffffff7b;
     text-decoration: none;
     display: block;
     float: left;
     padding: 15px;
+}
+
+.header a {
+    color: #ffffff7b;
+    text-decoration: none;
+    display: block;
+    float: left;
 }
 
 .header p {
@@ -54,7 +61,7 @@
     padding: 15px;
 }
 
-.header a:hover {
+.link:hover {
     background-color: rgb(26, 26, 37);
     color: #fff;
     border-radius: 10px;

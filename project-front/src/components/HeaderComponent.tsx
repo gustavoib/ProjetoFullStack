@@ -5,7 +5,7 @@ import logout_icon from '../assets/logout.svg';
 import { AuthContext } from '../contexts/auth';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
-import RegisterPage from '../pages/RegisterPage'; // Importe o componente RegisterPage
+import RegisterPage from '../pages/RegisterPage';
 
 const HeaderComponent = () => {
   const { authenticated, logout, register } = useContext(AuthContext);
@@ -33,24 +33,24 @@ const HeaderComponent = () => {
 
   return (
     <header className={styles.header}>
-      <h1>DoNotes</h1>
+      <a href='/home'><h1>DoNotes</h1></a>
       {authenticated ? (
         <>
           {/* Elementos a serem mostrados quando o usuário está autenticado */}
-          <a href="/list-notes" onClick={handleRegister}>Minhas notes</a>
+          <a href="/list-notes" className={styles.link} onClick={handleRegister}>Minhas notes</a>
           <img src={perfil} className={styles.perfil} alt="Avatar" />
           <p>{String(user.name)}</p>
           <img src={logout_icon} className={styles.logout} alt="Logout" />
-          <a href="#contact" className="logout" onClick={handleLogout}>Logout</a>
+          <a href="#contact" className={styles.link} onClick={handleLogout}>Logout</a>
         </>
       ) : (
         <>
           {/* Elementos a serem mostrados quando o usuário não está autenticado */}
-          <a href="#about">Sobre o desenvolvedor</a>
-          <a href="#contact">Contatos</a>
-          <a href="https://github.com/gustavoib/ProjetoFullStack/tree/front-end">Repositório GitHub</a>
+          <a href="#about" className={styles.link} >Sobre o desenvolvedor</a>
+          <a href="#contact" className={styles.link} >Contatos</a>
+          <a href="https://github.com/gustavoib/ProjetoFullStack/tree/front-end" className={styles.link}>Repositório GitHub</a>
           <img src={perfil} className={styles.perfil} alt="Avatar" />
-          <a href="#register" className="cadastro" onClick={openModal}>Cadastre-se</a>
+          <a href="#register" className={styles.link} onClick={openModal}>Cadastre-se</a>
         </>
       )}
 

@@ -1,33 +1,28 @@
 import FooterComponent from '../components/FooterComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import styles from './ViewNotes.module.css';
-//import CardComponent from '../components/CardComponent';
 import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
-//import CardComponent from '../components/CardComponentView';
-import { getNotes } from '../services/service';
 import CardComponentView from '../components/CardComponentView';
+import { getNotes } from '../services/service';
 import { api } from '../services/service';
-
-
 
 const ViewNotes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
-        const token = localStorage.getItem('token');
-        const storagedUser = localStorage.getItem('user');
-        const user = JSON.parse(String(storagedUser));
-        const id = user.idUser;
+      const token = localStorage.getItem('token');
+      const storagedUser = localStorage.getItem('user');
+      const user = JSON.parse(String(storagedUser));
+      const id = user.idUser;
 
-        api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.Authorization = `Bearer ${token}`;
 
-        const response = await getNotes(id);
-        setNotes(response.data);
-        }
-    )();
+      const response = await getNotes(id);
+      setNotes(response.data);
+    })();
   }, []);
 
   const closeModal = () => {
@@ -39,9 +34,13 @@ const ViewNotes = () => {
       <HeaderComponent />
       <div className={styles.view}>
         <div className={styles.conteiner}>
-          {notes.map((nota:any) => (
-            <CardComponentView key={nota.idNote} content={nota.content} title={nota.title}/>
-          ))}
+          {notes.length === 0 ? (
+            <h3>Você ainda não possui notas.</h3>
+          ) : (
+            notes.map((nota) => (
+              <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} />
+            ))
+          )}
         </div>
       </div>
       <FooterComponent />
@@ -52,8 +51,9 @@ const ViewNotes = () => {
         shouldCloseOnEsc={true}
         className={styles.modal}
       >
-        <button className={styles.close} onClick={closeModal}>X</button>
-        {/*<CardComponent/>*/}
+        <button className={styles.close} onClick={closeModal}>
+          X
+        </button>
       </Modal>
     </>
   );

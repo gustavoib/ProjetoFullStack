@@ -2,10 +2,9 @@ import FooterComponent from '../components/FooterComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import styles from './Home.module.css';
 import write_icon from '../assets/write_icon.svg';
-//import CardComponent from '../components/CardComponent';
 import Modal from 'react-modal';
 import { useState } from 'react';
-import CardComponentView from '../components/CardComponentView';
+import CardComponentWrite from '../components/CardComponenteWrite';
 
 
 
@@ -27,12 +26,6 @@ const HomePage = () => {
         <img src={write_icon} className='image1' alt='icon' />
         <h1>Comece agora! Escreva uma nova nota de texto.</h1>
         <button onClick={openModal}>Escrever nota</button>
-        {/*<div className={styles.conteiner}>
-          <CardComponentView />
-          <CardComponentView />
-          <CardComponentView />
-          <CardComponentView />
-  </div>*/}
      </div>
       <FooterComponent />
       <Modal
@@ -43,7 +36,7 @@ const HomePage = () => {
         className={styles.modal}
       >
         <button className={styles.close} onClick={closeModal}>X</button>
-        <CardComponentView/>
+        <CardComponentWrite/>
       </Modal>
     </>
   );

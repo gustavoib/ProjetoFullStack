@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerUser /*, getNotes*/ } from '../services/service';
+import { api, loginUser, registerUser, createNote /*, getNotes*/ } from '../services/service';
 
 export const AuthContext = createContext({} as any);
 
@@ -71,24 +71,29 @@ export const AuthProvider = ({children}:any) => {
       };
     };
 
-    // const listNotes = async () => {
-    //   const storagedUser = localStorage.getItem('user');
-    //   const user = JSON.parse(String(storagedUser));
-    //   const id = user.idUser;
+    const registerNote = async (title:string, description:string) => {
+      const token = localStorage.getItem('token');
+      const storagedUser = localStorage.getItem('user');
+      const user = JSON.parse(String(storagedUser));
+      const idUser = user.idUser;
 
-    //   const response = await getNotes(id);
+      api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    //   api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+      try {
+        const response = await createNote(title, description, idUser);
 
-    //   const notes = response.data;
+        const registeredNote = response.data;
 
-    //   console.log('notes', notes);
+        console.log('registeredNote', registeredNote);
 
-    //   return notes;
-    // };
+        return true; // Registro bem-sucedido
+      } catch (error) {
+        return false; // Cadastro falhou
+      };
+    };
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register}}>
+        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register, registerNote}}>
             {children}
         </AuthContext.Provider>
     )

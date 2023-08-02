@@ -17,5 +17,9 @@ export const createNote = async (title: string, content: string, id: string) => 
 }
 
 export const getNotes = async (id: string) => {
-    return api.get("/notes/"+ id + "/list-notes");
+    return api.get("/notes/" + id + "/list-notes");
+}
+
+export const delNote = async (id_user: string, id: string) => {
+    return api.delete("/notes/" + id_user + "/" + id + "/delete");
 }

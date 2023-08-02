@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerUser, createNote /*, getNotes*/ } from '../services/service';
+import { api, loginUser, registerUser, createNote, delNote /*, getNotes*/ } from '../services/service';
 
 export const AuthContext = createContext({} as any);
 
@@ -50,6 +50,7 @@ export const AuthProvider = ({children}:any) => {
 
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('notes');
 
       api.defaults.headers.Authorization = null;
 
@@ -92,8 +93,31 @@ export const AuthProvider = ({children}:any) => {
       };
     };
 
+    const deleteNote = async (id_note:string) => {
+      const token = localStorage.getItem('token');
+      const storagedUser = localStorage.getItem('user');
+      const user = JSON.parse(String(storagedUser));
+      const idUser = user.idUser;
+
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+
+      try {
+        const response = await delNote(idUser, id_note);
+
+        const registeredNote = response.data;
+
+        console.log('registeredNote', registeredNote);
+
+        return true; // Registro bem-sucedido
+      } catch (error) {
+        return false; // Cadastro falhou
+      };
+    };
+
+        
+
     return (
-        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register, registerNote}}>
+        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register, registerNote, deleteNote}}>
             {children}
         </AuthContext.Provider>
     )

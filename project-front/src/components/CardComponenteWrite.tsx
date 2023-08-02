@@ -10,7 +10,7 @@ const CardComponentWrite = () => {
   const [/*createFailure*/, setCreateFailure] = useState(false);
   const { registerNote } = useContext(AuthContext);
 
-  const handleSubmit = async (e: any) => {
+  const handleWriteNote = async (e: any) => {
     e.preventDefault();
 
     try {
@@ -49,7 +49,7 @@ const CardComponentWrite = () => {
               placeholder="Digite sua nota"
               className={styles.cardtextInput}
             />
-            <button type="submit" className={styles.cardbutton} onClick={handleSubmit}>Salvar</button>
+            <button type="submit" className={styles.cardbutton} onClick={handleWriteNote}>Salvar</button>
         </div>
       </div>
     </>

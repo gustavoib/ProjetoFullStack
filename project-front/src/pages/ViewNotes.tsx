@@ -26,6 +26,7 @@ const ViewNotes = () => {
   }, []);
 
   const closeModal = () => {
+    window.location.reload();
     setIsModalOpen(false);
   };
 
@@ -38,7 +39,7 @@ const ViewNotes = () => {
             <h3>Você ainda não possui notas.</h3>
           ) : (
             notes.map((nota) => (
-              <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} />
+              <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} id={nota.idNote} />
             ))
           )}
         </div>

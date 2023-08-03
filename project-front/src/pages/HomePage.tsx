@@ -21,13 +21,14 @@ const HomePage = () => {
 
   return (
     <>
-      <HeaderComponent />
+    <HeaderComponent />
       <div className={styles.home}>
         <img src={write_icon} className='image1' alt='icon' />
         <h1>Comece agora! Escreva uma nova nota de texto.</h1>
         <button onClick={openModal}>Escrever nota</button>
-     </div>
+      </div>
       <FooterComponent />
+      {/* aplicação do Modal */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

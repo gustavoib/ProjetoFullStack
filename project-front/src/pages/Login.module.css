@@ -1,54 +1,55 @@
+/* Estilos padrão */
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #e3e2eb;
-}
+  }
   
-form {
+  form {
     width: 350px;
     padding: 40px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-}
+  }
   
-form h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #333;
-}
+  form h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
   
-label {
+  label {
     display: block;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 10px;
     color: #555;
-}
+  }
   
-input {
+  input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
     margin-bottom: 20px;
-}
-
-.login a {
+  }
+  
+  .login a {
     text-decoration: none;
     color: #555;
     font-size: 80%;
-}
-
-a:hover {
-    color: #000;
-}
+  }
   
-.login button {
+  a:hover {
+    color: #000;
+  }
+  
+  .login button {
     width: 100%;
     padding: 14px;
     background-color: #212129;
@@ -59,16 +60,15 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
-}
+  }
   
-.login button:hover {
+  .login button:hover {
     background-color: rgb(26, 26, 37);
-}
-
-.error {
+  }
+  
+  .error {
     color: red;
     font-size: 0.8rem;
     margin-top: 5px;
     margin-bottom: 10px;
-}
-  
+  }

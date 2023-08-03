@@ -1,14 +1,11 @@
 import FooterComponent from '../components/FooterComponent';
 import HeaderComponent from '../components/HeaderComponent';
-import styles from './ViewNotes.module.css';
-import Modal from 'react-modal';
-import { useState, useEffect } from 'react';
 import CardComponentView from '../components/CardComponentView';
-import { getNotes } from '../services/service';
-import { api } from '../services/service';
+import styles from './ViewNotes.module.css';
+import { useState, useEffect } from 'react';
+import { getNotes, api } from '../services/service';
 
 const ViewNotes = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [notes, setNotes] = useState<any[]>([]);
 
   useEffect(() => {
@@ -25,9 +22,8 @@ const ViewNotes = () => {
     })();
   }, []);
 
-  const closeModal = () => {
-    window.location.reload();
-    setIsModalOpen(false);
+  const compareById = (a: any, b: any) => {
+    return a.idNote - b.idNote;
   };
 
   return (
@@ -38,24 +34,13 @@ const ViewNotes = () => {
           {notes.length === 0 ? (
             <h3>Você ainda não possui notas.</h3>
           ) : (
-            notes.map((nota) => (
+            notes.sort(compareById).map((nota) => (
               <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} id={nota.idNote} />
             ))
           )}
         </div>
       </div>
       <FooterComponent />
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Página de Registro"
-        shouldCloseOnEsc={true}
-        className={styles.modal}
-      >
-        <button className={styles.close} onClick={closeModal}>
-          X
-        </button>
-      </Modal>
     </>
   );
 };

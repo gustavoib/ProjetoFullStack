@@ -8,11 +8,6 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.home {
-    min-height: 100vh;
-    background-color: #e3e2eb;
-}
-
 .close {
     position: absolute;
     top: 10px;
@@ -30,6 +25,11 @@
 }
 
 /*estilos para a home*/
+.home {
+    min-height: 100vh;
+    background-color: #e3e2eb;
+}
+
 .home h1 {
     font-size: 16px;
     text-align: center;

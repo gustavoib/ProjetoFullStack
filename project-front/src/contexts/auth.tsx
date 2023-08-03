@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerUser, createNote, delNote /*, getNotes*/ } from '../services/service';
+import { api, loginUser, registerUser, createNote, delNote, updateNote /*, getNotes*/ } from '../services/service';
 
 export const AuthContext = createContext({} as any);
 
@@ -114,10 +114,28 @@ export const AuthProvider = ({children}:any) => {
       };
     };
 
+    const editNote = async (id:number, title:string, description:string) => {
+      const token = localStorage.getItem('token');
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+
+      try {
+        const response = await updateNote(id, title, description);
+
+        const editedNote = response.data;
+
+        console.log('editedNote', editedNote);
+
+        return true; // Registro bem-sucedido
+      } catch (error) {
+        return false; // Cadastro falhou
+      };
+    };
+      
+
         
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register, registerNote, deleteNote}}>
+        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, register, registerNote, deleteNote, editNote}}>
             {children}
         </AuthContext.Provider>
     )

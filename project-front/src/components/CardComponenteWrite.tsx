@@ -18,17 +18,17 @@ const CardComponentWrite = () => {
 
       if (success) {
         toast.success('Cadastro realizado com sucesso!');
-        setTitle(''); // Limpa o campo de título após o envio
-        setContent(''); // Limpa o campo de conteúdo após o envio
+        setTitle(''); 
+        setContent(''); 
       } else {
         setCreateFailure(true);
       }
     } catch (error) {
-      // Trate o erro aqui, caso ocorra algum problema na requisição
       console.error('Erro ao enviar a requisição:', error);
       toast.error('Ocorreu um erro ao enviar a requisição. Tente novamente.');
     }
   };
+
 
   return (
     <>

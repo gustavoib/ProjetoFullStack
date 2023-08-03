@@ -23,3 +23,7 @@ export const getNotes = async (id: string) => {
 export const delNote = async (id_user: string, id: string) => {
     return api.delete("/notes/" + id_user + "/" + id + "/delete");
 }
+
+export const updateNote = async (id: number, title: string, content: string) => {
+    return api.put("/notes/" + id + "/edit", { title, content });
+}  

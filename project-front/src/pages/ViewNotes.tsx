@@ -19,6 +19,7 @@ const ViewNotes = () => {
 
       const response = await getNotes(id);
       setNotes(response.data);
+      console.log(response.data);
     })();
   }, []);
 
@@ -35,7 +36,7 @@ const ViewNotes = () => {
             <h3>Você ainda não possui notas.</h3>
           ) : (
             notes.sort(compareById).map((nota) => (
-              <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} id={nota.idNote} />
+              <CardComponentView key={nota.idNote} content={nota.content} title={nota.title} id={nota.idNote} date={nota.date}/>
             ))
           )}
         </div>

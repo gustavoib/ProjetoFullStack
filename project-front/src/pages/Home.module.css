@@ -16,12 +16,15 @@
     height: 30px;
     border: none;
     border-radius: 4px;
-    background-color: #ff000081;
+    background-color: #e90a0a;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+.close:hover {
+    background-color: #a52424;
 }
 
 /*estilos para a home*/
